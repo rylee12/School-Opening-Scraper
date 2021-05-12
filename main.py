@@ -6,27 +6,6 @@ from boxsdk import JWTAuth, Client
 from boxsdk.network.default_network import DefaultNetwork
 from pprint import pformat
 
-'''
-# Logging for Box integration
-class LoggingNetwork(DefaultNetwork):
-    def request(self, method, url, access_token, **kwargs):
-        """ Base class override. Pretty-prints outgoing requests and incoming responses. """
-        print('\x1b[36m{} {} {}\x1b[0m'.format(method, url, pformat(kwargs)))
-        response = super(LoggingNetwork, self).request(
-            method, url, access_token, **kwargs
-        )
-        if response.ok:
-            print('\x1b[32m{}\x1b[0m'.format(response.content))
-        else:
-            print('\x1b[31m{}\n{}\n{}\x1b[0m'.format(
-                response.status_code,
-                response.headers,
-                pformat(response.content),
-            ))
-        return response
-'''
-
-
 # Function to handle uploading files to Box
 def uploadToBox(client, folder_id, filename):
     folder = client.folder(folder_id=folder_id)
@@ -46,7 +25,7 @@ if __name__ == '__main__':
     logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
     # Currently working states <-- ADD STATES BELOW
     currentStates = ["alabama", "colorado", "illinois", "new_mexico", "maryland", "ohio", "oregon", "south_carolina",
-                     "tennessee", "washington", "north_carolina", "connecticut", "rhode_island"]
+                     "tennessee", "washington", "north_carolina", "connecticut", "rhode_island","virginia", "hawaii", "missouri"]
 
     # Run with Box integration flag (defaults to True)
     useBox = True
@@ -67,7 +46,7 @@ if __name__ == '__main__':
             try:
                 os.mkdir(localFolder)
             except OSError:
-                logging.error("Failed to create directory %s", folder, exc_info=False)
+                logging.error("Failed to create directory %s", localFolder, exc_info=False)
 
     # Import module for each state script
     modules = {}
@@ -129,5 +108,5 @@ if __name__ == '__main__':
                 print("Successfully cleared output folder.")
 
     # Print results
-    logging.info("Fetched data for " + str(successes) + " in " + str(elapsed) + " seconds.", exc_info=False);
-    logging.info("Failed to fetch: " + str(failures), exc_info=False);
+    logging.info("Fetched data for " + str(successes) + " in " + str(elapsed) + " seconds.", exc_info=False)
+    logging.info("Failed to fetch: " + str(failures), exc_info=False)
