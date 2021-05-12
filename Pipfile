@@ -14,7 +14,8 @@ pandas = "*"
 html5lib = "*"
 tabula-py = "*"
 lxml = "*"
-boxsdk = "*"
+boxsdk = {extras = ["jwt"], version = "*"}
+
 
 [dev-packages]
 

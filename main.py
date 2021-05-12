@@ -2,11 +2,11 @@ import logging
 from timeit import default_timer as timer
 import importlib
 import os
-from boxsdk import Client, OAuth2
+from boxsdk import JWTAuth, Client
 from boxsdk.network.default_network import DefaultNetwork
 from pprint import pformat
 
-
+'''
 # Logging for Box integration
 class LoggingNetwork(DefaultNetwork):
     def request(self, method, url, access_token, **kwargs):
@@ -24,6 +24,7 @@ class LoggingNetwork(DefaultNetwork):
                 pformat(response.content),
             ))
         return response
+'''
 
 
 # Function to handle uploading files to Box
@@ -50,23 +51,11 @@ if __name__ == '__main__':
     # Run with Box integration flag (defaults to True)
     useBox = True
 
-    # Set-up Box client with details from boxConfig.txt
-    CLIENT_ID = None
-    CLIENT_SECRET = None
-    ACCESS_TOKEN = None
 
     if useBox:
         try:
-            with open('boxConfig.txt', 'r') as boxConfig:
-                CLIENT_ID = boxConfig.readline()
-                CLIENT_SECRET = boxConfig.readline()
-                ACCESS_TOKEN = boxConfig.readline()
-
-            # Create OAuth2 object. Authenticated with access token.
-            oauth2 = OAuth2(CLIENT_ID, CLIENT_SECRET, access_token=ACCESS_TOKEN)
-
-            # Create the authenticated client
-            client = Client(oauth2)#, LoggingNetwork())
+            auth = JWTAuth.from_settings_file('jwt_auth.json')
+            client = Client(auth)
         except Exception as e:
             print("Error creating Box client: %s" % e)
     else:

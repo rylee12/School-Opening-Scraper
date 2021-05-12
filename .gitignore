@@ -14,6 +14,7 @@ temp/
 
 # security
 boxConfig.txt
+jwt_auth.json
 
 # byte-compiled
 __pycache__/
