@@ -10,7 +10,7 @@ def main():
     logging.info("Received Hawaii Data", exc_info=False);
 
     ws = ts.getWorksheet("CDC Map")
-    ws.data.to_csv("HI_" + datetime.now().strftime('%Y%m%d') + ".csv")
+    ws.data.to_csv("out/HI_" + datetime.now().strftime('%Y%m%d') + ".csv")
     logging.info("Wrote Hawaii Data", exc_info=False);
 
 main()
