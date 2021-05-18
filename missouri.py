@@ -1,5 +1,6 @@
 from tableauscraper import TableauScraper as TS
 from datetime import datetime
+import logging
 
 def main():
     logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
