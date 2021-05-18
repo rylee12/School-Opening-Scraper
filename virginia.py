@@ -1,5 +1,6 @@
 from tableauscraper import TableauScraper as TS
 from datetime import datetime
+import logging
 
 def main():
     logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
@@ -12,7 +13,7 @@ def main():
 
     for t in workbook.worksheets:
         df = t.data
-    df.to_csv("VA_" + datetime.now().strftime('%Y%m%d') + ".csv")
+    df.to_csv("out/VA_" + datetime.now().strftime('%Y%m%d') + ".csv")
     logging.info("Wrote Virginia Data", exc_info=False);
 
 main()

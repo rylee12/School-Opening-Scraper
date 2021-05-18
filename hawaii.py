@@ -1,5 +1,6 @@
 from tableauscraper import TableauScraper as TS
 from datetime import datetime
+import logging
 
 def main():
     logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
@@ -10,7 +11,7 @@ def main():
     logging.info("Received Hawaii Data", exc_info=False);
 
     ws = ts.getWorksheet("CDC Map")
-    ws.data.to_csv("HI_" + datetime.now().strftime('%Y%m%d') + ".csv")
+    ws.data.to_csv("out/HI_" + datetime.now().strftime('%Y%m%d') + ".csv")
     logging.info("Wrote Hawaii Data", exc_info=False);
 
 main()

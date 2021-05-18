@@ -25,7 +25,8 @@ if __name__ == '__main__':
     logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
     # Currently working states <-- ADD STATES BELOW
     currentStates = ["alabama", "colorado", "illinois", "new_mexico", "maryland", "ohio", "oregon", "south_carolina",
-                     "tennessee", "washington", "north_carolina", "connecticut", "rhode_island","virginia", "hawaii", "missouri"]
+                     "tennessee", "washington", "north_carolina", "connecticut", "rhode_island", "virginia", "hawaii", 
+                     "missouri", "idaho", "louisiana"]
 
     # Run with Box integration flag (defaults to True)
     useBox = True
