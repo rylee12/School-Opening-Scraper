@@ -11,7 +11,7 @@ def main():
     df = pd.DataFrame(
         columns=['district', 'city', 'county', 'instructional delivery', 'school count', 'grades served', 'total PreK-12 enrollment',
                  'modified id', 'date scraped'])
-    url = "https://services2.arcgis.com/3yCQWqEMIRwEdrth/arcgis/rest/services/School_District_Survey_Public/FeatureServer/0/query?f=json&where=(InstrFormat%20%3D%20%27Blended%20Remote%20Learning%27)%20OR%20(InstrFormat%20%3D%20%27In-Person%20Learning%27)%20OR%20(InstrFormat%20%3D%20%27Remote%20Learning%27)&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=USER_Facil%20asc&resultOffset=0&resultRecordCount=670&resultType=standard&cacheHint=true"
+    url = "https://services2.arcgis.com/3yCQWqEMIRwEdrth/arcgis/rest/services/School_District_Survey_Public/FeatureServer/0/query?f=json&where=(InstrFormat%20%3D%20%27Blended%20Remote%20Learning%27)%20OR%20(InstrFormat%20%3D%20%27In-Person%20Learning%27)%20OR%20(InstrFormat%20%3D%20%27Remote%20Learning%27)&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=USER_Facil%20asc&resultOffset=0&resultRecordCount=1000&resultType=standard&cacheHint=true"
     openUrl = requests.get(url)
     jsonD = openUrl.json()
     logging.info("Received Illinois Data", exc_info=False);
