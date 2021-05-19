@@ -10,8 +10,10 @@ def main():
     ts.loads(url)
     logging.info("Received MO Data", exc_info=False);
 
-    ws = ts.getWorksheet("MOmap-AllCategory")
-    ws.data.to_csv("out/MO_" + datetime.now().strftime('%Y%m%d') + ".csv")
-    logging.info("Wrote MO Data", exc_info=False);
+    lea_on_map = ts.getWorksheet("MOmap-AllCategory").data
+    lea_not_on_map = ts.getWorksheet("MOmap-AllCategory (2)").data
+    result = lea_on_map.append(lea_not_on_map)
+    result = result.reset_index(drop=True)
+    result.to_csv("out/MO_" + datetime.now().strftime('%Y%m%d') + ".csv")
 
 main()
