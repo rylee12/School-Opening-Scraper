@@ -14,4 +14,4 @@ def main():
     ws.data.to_csv("out/HI_" + datetime.now().strftime('%Y%m%d') + ".csv")
     logging.info("Wrote Hawaii Data", exc_info=False);
 
-main()
+# main()

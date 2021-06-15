@@ -16,4 +16,4 @@ def main():
     df.to_csv("out/VA_" + datetime.now().strftime('%Y%m%d') + ".csv")
     logging.info("Wrote Virginia Data", exc_info=False);
 
-main()
+# main()

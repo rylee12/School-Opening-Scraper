@@ -15,4 +15,4 @@ def main():
     sdf.to_csv("out/ID_" + datetime.now().strftime('%Y%m%d') + ".csv")
     logging.info("Wrote Idaho Data", exc_info=False);
 
-main()
+# main()
