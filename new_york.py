@@ -25,6 +25,7 @@ def copy_to_new_csv():
     for filename in os.listdir("temp/"):
         if filename.startswith("Wave"):
             tmp = pd.read_csv("temp/"+filename, index_col=None, header=0)
+            tmp["wave_number"] = filename.split('.')[0]
             li.append(tmp)
 
     df = pd.concat(li, axis=0, ignore_index=True)
