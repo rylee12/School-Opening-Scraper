@@ -16,4 +16,4 @@ def main():
     result = result.reset_index(drop=True)
     result.to_csv("out/MO_" + datetime.now().strftime('%Y%m%d') + ".csv")
 
-main()
+#main()
