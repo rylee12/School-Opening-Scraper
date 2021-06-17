@@ -30,4 +30,4 @@ def copy_to_new_csv():
     df = pd.concat(li, axis=0, ignore_index=True)
     df.to_csv('out/NY_' + datetime.now().strftime('%Y%m%d') + '.csv', index=False)
 
-main()
+#main()
