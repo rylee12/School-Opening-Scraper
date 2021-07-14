@@ -54,6 +54,9 @@ def copy_to_new_csv():
 
         inputRow += 1  # End for
     originalFile.close()
-    df.to_csv('out/NC_' + datetime.now().strftime('%Y%m%d') + '.csv', index=False)  # Copy dataframe to CSV
+    if df.empty:
+        print("Empty file! NC data will not be saved to file.")
+    else:
+        df.to_csv('out/NC_' + datetime.now().strftime('%Y%m%d') + '.csv', index=False)  # Copy dataframe to CSV
 
 #main()
