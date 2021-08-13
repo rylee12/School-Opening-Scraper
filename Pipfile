@@ -17,6 +17,7 @@ lxml = "*"
 boxsdk = {extras = ["jwt"], version = "*"}
 TableauScraper = "*"
 arcgis = "*"
+re = "*"
 
 [dev-packages]
 
