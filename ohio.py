@@ -1,5 +1,4 @@
 import logging
-
 import requests
 from openpyxl import load_workbook
 from bs4 import BeautifulSoup
@@ -14,9 +13,9 @@ def main():
     url = "http://education.ohio.gov/Topics/Reset-and-Restart"
     html = requests.get(url).content
     soup = BeautifulSoup(html, 'html.parser')
-    modifiedDate = download_xslx()
+    modifiedDate = download_xslx(soup)
     logging.info("Received Ohio Data", exc_info=False);
-    copy_to_new_csv(modifiedDate)
+    copy_to_new_csv(soup, modifiedDate)
     logging.info("Wrote Ohio Data", exc_info=False);
 
 
