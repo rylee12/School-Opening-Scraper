@@ -8,7 +8,6 @@ requests = "*"
 openpyxl = "*"
 bs4 = "*"
 getresponse = "*"
-as = "*"
 pd = "*"
 pandas = "*"
 html5lib = "*"
@@ -17,7 +16,6 @@ lxml = "*"
 boxsdk = {extras = ["jwt"], version = "*"}
 TableauScraper = "*"
 arcgis = "*"
-re = "*"
 
 [dev-packages]
 
