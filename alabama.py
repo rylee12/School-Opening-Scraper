@@ -2,6 +2,7 @@ import json
 import logging
 import urllib
 import pandas as pd
+import re
 from datetime import date
 from datetime import datetime
 
@@ -26,6 +27,14 @@ def main():
                                   'instructional delivery': instructional_delivery, 'week of': week_of,
                                   'total positive cases': total_pos_lbl, 'date scraped': date.today()})
         df = df.append(new_row, ignore_index=True)
+    
+    url2 = 'https://www.arcgis.com/sharing/rest/content/items/c6909b3820ae4047b0317fa00abc46fc/data'
+    open_url2 = urllib.request.urlopen(url2)
+    page_html = json.loads(open_url2.read())
+
+    subtitle = page_html['headerPanel']['subtitle'].split("|")[1].strip()
+    df["last_updated"] = re.search('([a-zA-Z]+) (\d+)', subtitle).group(0)
+
     df.to_csv('out/AL_' + datetime.now().strftime('%Y%m%d') + '.csv', index=False)
     logging.info("Wrote Alabama Data", exc_info=False);
 
