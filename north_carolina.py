@@ -8,11 +8,11 @@ from datetime import datetime
 
 
 def main():
-    logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
+    #logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
     download_csv()
-    logging.info("Received North Carolina Data", exc_info=False);
+    #logging.info("Received North Carolina Data", exc_info=False);
     copy_to_new_csv()
-    logging.info("Wrote North Carolina Data", exc_info=False);
+    #logging.info("Wrote North Carolina Data", exc_info=False);
 
 # Instruction Plan Definitions: https://covid19.ncdhhs.gov/media/164/open
 

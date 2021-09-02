@@ -9,15 +9,15 @@ import re
 
 
 def main():
-    logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
+    #logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
     # Get html of page
     url = "http://education.ohio.gov/Topics/Reset-and-Restart"
     html = requests.get(url).content
     soup = BeautifulSoup(html, 'html.parser')
     modifiedDate = download_xslx(soup)
-    logging.info("Received Ohio Data", exc_info=False);
+    #logging.info("Received Ohio Data", exc_info=False);
     copy_to_new_csv(soup, modifiedDate)
-    logging.info("Wrote Ohio Data", exc_info=False);
+    #logging.info("Wrote Ohio Data", exc_info=False);
 
 
 def download_xslx(soup):

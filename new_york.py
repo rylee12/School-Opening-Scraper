@@ -5,11 +5,11 @@ import os
 from datetime import datetime, date
 
 def main():
-    logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
+    #logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
     download_csv()
-    logging.info("Received New York Data", exc_info=False);
+    #logging.info("Received New York Data", exc_info=False);
     copy_to_new_csv()
-    logging.info("Wrote New York Data", exc_info=False);
+    #logging.info("Wrote New York Data", exc_info=False);
 
 def download_csv():
     url = "https://docs.google.com/spreadsheets/d/1U0FSbm77qXB4shssE66EFgp-I8Ia_I6_xYrotKk3Zqg/export?format=xlsx"

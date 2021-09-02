@@ -7,7 +7,7 @@ import requests
 
 
 def main():
-    logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
+    #logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
     df = pd.DataFrame(
         columns=["district code", "district name", "in-person grades", "hybrid grades", "remote grades",
                  "predominant learning model", "organization type", "alliance district",
@@ -15,7 +15,7 @@ def main():
     api_url = "https://data.ct.gov/resource/5q7h-u2ac.json"
     response = requests.get(api_url)
     data = response.json()
-    logging.info("Received Colorado Data", exc_info=False);
+    #logging.info("Received Colorado Data", exc_info=False);
 
     for properties in data:
         districtCode = properties["district_code"]
@@ -40,6 +40,6 @@ def main():
         df = df.append(new_row, ignore_index=True)
 
     df.to_csv('out/CT_' + datetime.now().strftime('%Y%m%d') + '.csv', index=False)
-    logging.info("Wrote Connecticut Data", exc_info=False);
+    #logging.info("Wrote Connecticut Data", exc_info=False);
 
 main()

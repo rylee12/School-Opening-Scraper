@@ -9,11 +9,11 @@ from datetime import datetime
 
 
 def main():
-    logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
+    #logging.basicConfig(filename='app.log', filemode='a', format='%(asctime)s - %(message)s', level=logging.INFO)
     download_xslx()
-    logging.info("Received Oregon Data", exc_info=False);
+    #logging.info("Received Oregon Data", exc_info=False);
     copy_to_new_csv()
-    logging.info("Wrote Oregon Data", exc_info=False);
+    #logging.info("Wrote Oregon Data", exc_info=False);
 
 def download_xslx():
     # Get html of page
