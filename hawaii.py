@@ -56,7 +56,7 @@ def ppe_cleaning_supplies():
     dict1 = {}
     df = pd.DataFrame(columns=column_names)
 
-    for i in range(0, len(excel_data["Complex Area"]) - 1):
+    for i in range(0, len(excel_data["Complex Area"])):
         dict1[i] = {}
 
         # complex and school info
@@ -93,25 +93,14 @@ def classroom_ventilation():
     dict1 = {}
     df = pd.DataFrame(columns=column_names)
 
-    total_classes = 0
-    ventilated_classes = 0
-    ventilation_gap = 0
-
     # loop through and combine complex areas
-    for i in range(0, len(excel_data["Complex Area"]) - 1):
-        complex_area = excel_data["Complex Area"].iloc[i]
-
-        if complex_area not in dict1:
-            dict1[complex_area] = {}
-            dict1[complex_area]["Total Classrooms"] = total_classes
-            dict1[complex_area]["Ventilated Classrooms"] = ventilated_classes
-            dict1[complex_area]["Classrooms Lacking Ventilation"] = ventilation_gap
+    for i in range(0, len(excel_data["Complex Area"])):
+        dict1[i] = {}
                   
-        dict1[complex_area]["Complex Area"] = excel_data["Complex Area"].iloc[i]
-        dict1[complex_area]["Pull Date"] = excel_data["Pull Date"].iloc[i]
-        dict1[complex_area]["Ventilated Classrooms"] += int(excel_data["M3 Ventilated Classrooms"].iloc[i])
-        dict1[complex_area]["Classrooms Lacking Ventilation"] += int(excel_data["M3 Ventilation Gap"].iloc[i])
-        dict1[complex_area]["Total Classrooms"] += int(excel_data["M3 Total Classrooms"].iloc[i])
+        dict1[i]["Complex Area"] = excel_data["Complex Area"].iloc[i]
+        dict1[i]["Ventilated Classrooms"] = excel_data["M3 Ventilated Classrooms"].iloc[i]
+        dict1[i]["Classrooms Lacking Ventilation"] = excel_data["M3 Ventilation Gap"].iloc[i]
+        dict1[i]["Total Classrooms"] = excel_data["M3 Total Classrooms"].iloc[i]
 
     # append to pandas dataframe
     for row in dict1:
@@ -127,7 +116,7 @@ def social_distancing():
 
     df = pd.DataFrame(columns=column_names)
 
-    for i in range(0, len(excel_data["Complex Area"]) - 1):
+    for i in range(0, len(excel_data["Complex Area"])):
         row = {"Complex Area": excel_data["Complex Area"].iloc[i], 
                 "Complex": excel_data["Complex"].iloc[i], 
                 "School Code": excel_data["School Code"].iloc[i], 
@@ -147,20 +136,13 @@ def device_gap():
     df = pd.DataFrame(columns=column_names)
 
     # loop through and combine complex areas
-    for i in range(0, len(excel_data["Complex Area"]) - 1):
-        complex_area = excel_data["Complex Area"].iloc[i]
+    for i in range(0, len(excel_data["Complex Area"])):
+        dict1[i] = {}
 
-        if complex_area not in dict1:
-            dict1[complex_area] = {}
-            dict1[complex_area]["Number Devices"] = 0
-            dict1[complex_area]["Device Gap"] = 0
-            dict1[complex_area]["Number of Devices For Learning"] = 0
-            dict1[complex_area]["Device Gap / Lacking"] = 0
-
-        dict1[complex_area]["Complex Area"] = excel_data["Complex Area"].iloc[i]
-        dict1[complex_area]["Pull Date"] = excel_data["Pull Date"].iloc[i]
-        dict1[complex_area]["Number of Devices For Learning"] += int(excel_data["Metric 11 Enrl"].iloc[i])
-        dict1[complex_area]["Device Gap / Lacking"] += int(excel_data["Metric 11 Device Gap"].iloc[i])
+        dict1[i]["Complex Area"] = excel_data["Complex Area"].iloc[i]
+        dict1[i]["Pull Date"] = excel_data["Pull Date"].iloc[i]
+        dict1[i]["Number of Devices For Learning"] = excel_data["Metric 11 Enrl"].iloc[i]
+        dict1[i]["Device Gap / Lacking"] = excel_data["Metric 11 Device Gap"].iloc[i]
 
     # append to pandas dataframe
     for row in dict1:
@@ -177,13 +159,11 @@ def connectivity_gap():
     dict1 = {}
     df = pd.DataFrame(columns=column_names)
 
-    for i in range(0, len(excel_data["Complex Area"]) - 1):
+    for i in range(0, len(excel_data["Complex Area"])):
         complex_area = excel_data["Complex Area"].iloc[i]
 
         if complex_area not in dict1:
             dict1[complex_area] = {}
-            dict1[complex_area]["Number Devices"] = 0
-            dict1[complex_area]["Device Gap"] = 0
             dict1[complex_area]["Number Devices"] = 0
             dict1[complex_area]["Device Gap"] = 0
 
@@ -205,7 +185,7 @@ def distance_learning():
     dict1 = {}
     df = pd.DataFrame(columns=column_names)
 
-    for i in range(0, len(excel_data["Complex Area"]) - 1):
+    for i in range(0, len(excel_data["Complex Area"])):
         complex_area = excel_data["Complex Area"].iloc[i]
 
         if complex_area not in dict1:
@@ -237,7 +217,7 @@ if __name__ == "__main__":
     #connectivity_gap()
     #distance_learning()
     #main1()
-    #main()
+    main()
     pass
 
 
